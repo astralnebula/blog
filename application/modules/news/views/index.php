@@ -6,7 +6,7 @@
     <h2><?php echo $news_item['title'] ?></h2>
     <div class="media"><?php if($photolist != '0'){
         foreach($newsphotos as $value)
-        echo '<img src="'.base_url().'./assets/news/thumbs/thumb_'.$value.'">';
+        echo '<img src="'.base_url().'./assets/news/thumbs/'.$value.'">';
         
         }
 
