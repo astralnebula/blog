@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `xx_news` (
 
 
 
-//that fixes that
+//that fixes that, this assumes your prefix will be xx_ for all tables. 
 
 */
 
