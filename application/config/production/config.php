@@ -7,6 +7,8 @@ $config['app_copyright'] = 'Earthbot, Inc';
 $config['app_author'] = 'AstralNebula';
 $config['copyrightyear'] = '2014';
 
+//These can be used in your templates!
+//Please scroll down and make a random long code for encryption key!
 
 
 
@@ -233,7 +235,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '98uiyjhrtgew3a456ytfgdwe4yrfhrgferTQEGWRGHAWBGWVC  Q2FVQEfawgserghdxfhjjgvkgSRGRe5e';
+$config['encryption_key'] = '9uhiuhiuhQfi76fi7fuyyfguoyfolygoygye';
 
 /*
 |--------------------------------------------------------------------------

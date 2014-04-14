@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `xx_members` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 INSERT INTO `xx_members` (`id`, `email`, `username`, `password`, `ip`, `time`, `ua`) VALUES
-(001, 'test@test.com', 'test', '2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df', '::1', '1396863044', 'fake UA string'),
+(001, 'test@test.com', 'test', '2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df', '::1', '1396863044', 'fake UA string');
 
 
 CREATE TABLE IF NOT EXISTS `xx_contact` (
@@ -55,6 +55,17 @@ CREATE TABLE IF NOT EXISTS `xx_contact` (
   `time` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `xx_news` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `slug` text NOT NULL,
+  `text` text NOT NULL,
+  `photolist` text NOT NULL,
+  `author` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 
 

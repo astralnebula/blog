@@ -8,7 +8,7 @@
 class Pandora {
 
  // ------------------------------------------------------------------------
-// critter: "HERE WE HAVE A DIVER." 
+// astralnebula: "HERE WE HAVE A DIVER." 
 
 
 function div($class='',$style=''){
@@ -33,7 +33,7 @@ return $undiv1;
 }
 
 
-// critter: "HERE WE HAVE A SPANNER." 
+// astralnebula: "HERE WE HAVE A SPANNER." 
 
 function span($color='',$size=''){
     $div = "<span";
@@ -57,7 +57,7 @@ return $undiv1;
 }
 
 
-// critter: here we have a colored box!
+// astralnebula: here we have a colored box!
 
 
 function box($bgcolor)
