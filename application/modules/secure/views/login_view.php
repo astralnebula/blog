@@ -10,7 +10,7 @@
       <br/>
       <input type="submit" value="Login"/>
     </form>
-    <? 
+    <?php 
    // $this->load->library('session');
 echo "<br>";
       echo anchor(site_url('secure/register'),'Need a new account?');

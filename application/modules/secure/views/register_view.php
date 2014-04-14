@@ -20,7 +20,7 @@
       <br/>
       <input type="submit" value="Login"/>
     </form>
-    <? 
+    <?php 
 //    $this->load->library('session');
     
 //var_dump($this->session->all_userdata())    

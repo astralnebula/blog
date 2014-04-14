@@ -10,8 +10,10 @@ class News extends MY_Controller {
         'images' => array(),
         'error' => ''
     );
+ //this above may not work too correctly, based on our location on the server sometimes.
 	public function __construct()
     {
+
 	$this->load->database();
     $this->load->library('template');
     $this->load->library('session');
@@ -93,9 +95,17 @@ public function view($slug)
 }
 public function create()
 {
-	$this->load->helper('form');
+	$this->load->library('session');
+ if($this->session->userdata('logged_in'))
+    {
+      $session_data = $this->session->userdata('logged_in');
+   
+      $data['username'] = $session_data['username'];
+           $data['id'] = $session_data['id'];
+
+ $this->load->helper('form');
 	$this->load->library('form_validation');
-    $this->load->library('session');
+    
 	   $this->load->library('template');
 	$data['title'] = 'Create a news item';
 
@@ -115,6 +125,14 @@ public function create()
         	$data['news_id'] = $news_id;
 	redirect('news/add_photos','refresh');
     }
+}
+    else
+    {
+   
+     redirect('secure', 'refresh');
+	} 
+	
+	
 }
 
 public function set_news()
@@ -160,36 +178,19 @@ public function set_news()
         if ($this->upload->do_upload()) {
             
             $img = $this->upload->data();
-            var_dump($img);
-           $source_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/news/original/' . $img['file_name']; 
-        //   $target_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/news/thumbs/';
-            // create thumbnail
-            	//$new_image = $this->data['dir']['thumb'].'thumb_'.$img['file_name'];
-            	 $target_path = $_SERVER['DOCUMENT_ROOT'] . '/devBlog/assets/news/thumbs/'.$img['file_name'];
-         
+           // var_dump($img);
+  $uploadpath =  $this->config->item('uploadpath');
+           $target_path = $uploadpath.'thumbs/thumb_'.$img['file_name'];
+         //echo $_SERVER['DOCUMENT_ROOT'];
             	
-     var_dump($target_path);
-     /*       
-      
-            $c_img_lib = array(
-                'image_library'     => 'gd2',
-                'source_image'      => $img['full_path'],
-                'maintain_ratio'    => TRUE,
-                'width'             => 100,
-                'height'            => 100,
-                'new_image'         => $new_image
-            );
-            
-            $this->load->library('image_lib', $c_img_lib);
-            
-*/
-				$config_manip = array(
+    // var_dump($target_path);
+			$config_manip = array(
 				'image_library' => 'gd2',
 				'source_image' => $img['full_path'],
 				'new_image' => $target_path,
 				'maintain_ratio' => TRUE,
 				'create_thumb' => TRUE,
-				'thumb_marker' => '_thumb',
+				'thumb_marker' => '',
 				'width' => 150,
 				'height' => 150
 				);
@@ -217,11 +218,9 @@ public function set_news()
         	$data['news_id'] = $this->session->userdata('news_id');
             $data['photolist'] = $this->session->userdata('photolist');
             $this->template->load_view('add_photos', $this->data);
-            $this->image_lib->clear();
         } else {
             $this->data['error'] = $this->upload->display_errors();
            $this->template->load_view('add_photos', $this->data);
-         //  $this->image_lib->clear();
         }
         
     }
@@ -239,20 +238,16 @@ $data = $this->session->userdata('news_id');
     }
   public function alldone(){
        $this->load->model('newsmodel');
-       // var_dump($this->session->all_userdata());
-        //echo "ALL DONE!";
           	$news_id = $this->session->userdata('news_id');
             $photolist = $this->session->userdata('photolist');
             $title = $this->session->userdata('title');
             $slug = $this->session->userdata('slug');
             $author = $this->session->userdata('author');
            $text = $this->session->userdata('text');
-           // echo $photolist;
-                       
+                     
             
          if($photolist != ''){
            $this->newsmodel->update_entry($news_id,$title,$slug,$text,$photolist,$author);
-          // echo "<br><br>db+<br><br>";
              }
             
         
@@ -265,8 +260,7 @@ $data = $this->session->userdata('news_id');
         
         $this->session->set_userdata($newnews);
          $this->session->sess_destroy();
-        // $this->session->sess_destroy();
-      
+    
         
         redirect('news','refresh');
     }

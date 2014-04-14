@@ -34,10 +34,9 @@ class VerifyLogin extends MY_Controller {
                            
                 
 
-           redirect('secure/dashboard', 'refresh');
+           redirect('secure/dashboard', 'refresh	');
        }else 
-       echo "wrong pw";
-            $this->load->view('login_view');
+       redirect('secure/login', 'refresh');
      
    }
 
@@ -49,7 +48,7 @@ class VerifyLogin extends MY_Controller {
    $username = $this->input->post('username');
 
    //query the database
-   $result = $this->userlogin->login($username, $password);
+   $result = $this->userlogin->debug($username, $password);
 
    if($result)
    {

@@ -7,6 +7,7 @@ class Register extends MY_Controller {
    parent::__construct();
    $this->load->library('session');
    $this->load->library('template');
+      $this->load->database();
    $this->load->model('registercheck');
        $this->load->helper('form');
        $this->load->library('form_validation');

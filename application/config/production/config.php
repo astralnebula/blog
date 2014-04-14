@@ -6,11 +6,12 @@ $config['app_description'] = 'Blog, based on CodeIgniter, Twitter Bootstrap, cod
 $config['app_copyright'] = 'Earthbot, Inc';
 $config['app_author'] = 'AstralNebula';
 $config['copyrightyear'] = '2014';
+$config['uploadpath'] = $_SERVER['DOCUMENT_ROOT'] . '/SuperBlog/assets/news/';
 
+//CHANGE THE SuperBlog to whatever folder you are in. ex: if you visit your page with http://astralnebula.isupon.us/SuperBlog/index.php, put /SuperBlog/assets/news
 //These can be used in your templates!
 //Please scroll down and make a random long code for encryption key!
-
-
+//CHMOD the assets so we can write/upload
 
 
 
@@ -191,7 +192,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -235,7 +236,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '9uhiuhiuhQfi76fi7fuyyfguoyfolygoygye';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -255,7 +256,7 @@ $config['encryption_key'] = '9uhiuhiuhQfi76fi7fuyyfguoyfolygoygye';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'MODULE';
+$config['sess_cookie_name']		= 'Blog';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= TRUE;
 $config['sess_encrypt_cookie']	= TRUE;
@@ -276,7 +277,7 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= "";
+$config['cookie_prefix']	= "_";
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
