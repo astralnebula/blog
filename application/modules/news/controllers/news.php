@@ -221,15 +221,15 @@ public function set_news()
         } else {
             $this->data['error'] = $this->upload->display_errors();
            $this->template->load_view('add_photos', $this->data);
-           $this->image_lib->clear();
+         //  $this->image_lib->clear();
         }
         
     }
 
     public function add_photos(){
         
-     //echo "news# ".$this->session->userdata('news_id');
-        //var_dump($this->newsmodel->random());
+     //echo "wrap# ".$this->session->userdata('wrap_id');
+        //var_dump($this->wrapmodel->random());
         	   $this->load->library('template');
                	   $this->load->library('session');
 $data = $this->session->userdata('news_id');
