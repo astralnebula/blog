@@ -160,10 +160,17 @@ public function set_news()
         if ($this->upload->do_upload()) {
             
             $img = $this->upload->data();
-            
+            var_dump($img);
+           $source_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/news/original/' . $img['file_name']; 
+        //   $target_path = $_SERVER['DOCUMENT_ROOT'] . '/assets/news/thumbs/';
             // create thumbnail
-            $new_image = $this->data['dir']['thumb'].'thumb_'.$img['file_name'];
-            
+            	//$new_image = $this->data['dir']['thumb'].'thumb_'.$img['file_name'];
+            	 $target_path = $_SERVER['DOCUMENT_ROOT'] . '/devBlog/assets/news/thumbs/'.$img['file_name'];
+         
+            	
+     var_dump($target_path);
+     /*       
+      
             $c_img_lib = array(
                 'image_library'     => 'gd2',
                 'source_image'      => $img['full_path'],
@@ -174,7 +181,24 @@ public function set_news()
             );
             
             $this->load->library('image_lib', $c_img_lib);
-            if($this->image_lib->resize()){
+            
+*/
+				$config_manip = array(
+				'image_library' => 'gd2',
+				'source_image' => $img['full_path'],
+				'new_image' => $target_path,
+				'maintain_ratio' => TRUE,
+				'create_thumb' => TRUE,
+				'thumb_marker' => '_thumb',
+				'width' => 150,
+				'height' => 150
+				);
+			
+			$this->load->library('image_lib', $config_manip);
+				
+            if (!$this->image_lib->resize()) {
+        echo $this->image_lib->display_errors();
+    }
             if($this->session->userdata('photolist') == ''){
                 $newnews = array(
                 'adding_photos' => 'TRUE',
@@ -193,16 +217,19 @@ public function set_news()
         	$data['news_id'] = $this->session->userdata('news_id');
             $data['photolist'] = $this->session->userdata('photolist');
             $this->template->load_view('add_photos', $this->data);
-        }} else {
+            $this->image_lib->clear();
+        } else {
             $this->data['error'] = $this->upload->display_errors();
            $this->template->load_view('add_photos', $this->data);
+           $this->image_lib->clear();
         }
+        
     }
 
     public function add_photos(){
         
-     //echo "wrap# ".$this->session->userdata('wrap_id');
-        //var_dump($this->wrapmodel->random());
+     //echo "news# ".$this->session->userdata('news_id');
+        //var_dump($this->newsmodel->random());
         	   $this->load->library('template');
                	   $this->load->library('session');
 $data = $this->session->userdata('news_id');
