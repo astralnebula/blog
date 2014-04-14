@@ -196,7 +196,7 @@ public function set_news()
         } else {
             $this->data['error'] = $this->upload->display_errors();
 
-            	$data['title'] = $data['news_item']['title'];
+//            	$data['title'] = $data['news_item']['title'];
            $this->template->load_view('add_photos', $this->data);
         }
     }
