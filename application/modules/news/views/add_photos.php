@@ -14,8 +14,8 @@ echo "adding photos to News Article# ".$this->session->userdata('news_id');
             <?php } ?>
         </form>
         
-        <?
-        var_dump($this->session->all_userdata());
+        <?php
+//        var_dump($this->session->all_userdata());
         
           echo " added to database. add another photo?";
              echo anchor('news/alldone','OR ALL DONE?');

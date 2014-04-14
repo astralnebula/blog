@@ -174,7 +174,7 @@ public function set_news()
             );
             
             $this->load->library('image_lib', $c_img_lib);
-            $this->image_lib->resize();
+            if($this->image_lib->resize()){
             if($this->session->userdata('photolist') == ''){
                 $newnews = array(
                 'adding_photos' => 'TRUE',
@@ -193,10 +193,8 @@ public function set_news()
         	$data['news_id'] = $this->session->userdata('news_id');
             $data['photolist'] = $this->session->userdata('photolist');
             $this->template->load_view('add_photos', $this->data);
-        } else {
+        }} else {
             $this->data['error'] = $this->upload->display_errors();
-
-//            	$data['title'] = $data['news_item']['title'];
            $this->template->load_view('add_photos', $this->data);
         }
     }
@@ -207,6 +205,7 @@ public function set_news()
         //var_dump($this->wrapmodel->random());
         	   $this->load->library('template');
                	   $this->load->library('session');
+$data = $this->session->userdata('news_id');
         $this->load->helper('form');
      $this->template->load_view('add_photos', $data);
   
