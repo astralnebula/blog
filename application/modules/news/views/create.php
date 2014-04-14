@@ -4,7 +4,7 @@
 echo validation_errors();
 echo form_open('news/create');
 ?>
-<?
+<?php
     
 echo form_input('title','title','title');
 echo form_input('text','text','text');
