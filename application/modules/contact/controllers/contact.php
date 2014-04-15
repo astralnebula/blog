@@ -21,10 +21,13 @@ class Contact extends MY_Controller {
             $this->load->helper('form');
         $this->template->set_title('Contact');
         $this->load->database();
+        $this->load->library('encrypt');
+ $msg = $this->input->post('msg');
 
+$enc = $this->encrypt->encode($msg);
        $time = time();
 $this->db->set('id', 'NULL');
-$this->db->set('msg', $this->input->post('msg'));
+$this->db->set('msg', $enc);
 $this->db->set('time', $time);
 
 

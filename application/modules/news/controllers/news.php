@@ -181,9 +181,7 @@ public function set_news()
            // var_dump($img);
   $uploadpath =  $this->config->item('uploadpath');
            $target_path = $uploadpath.'thumbs/thumb_'.$img['file_name'];
-         //echo $_SERVER['DOCUMENT_ROOT'];
-            	
-    // var_dump($target_path);
+         
 			$config_manip = array(
 				'image_library' => 'gd2',
 				'source_image' => $img['full_path'],

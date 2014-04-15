@@ -119,7 +119,7 @@
         <?php } ?>
     </div>
 
-    <div id="imglist"><a name="upload">
+    <div id="imglist"><a name="upload"></a>
         <form enctype="multipart/form-data" id="fupload" method="post" action="<?php echo site_url('gallery/upload'); ?>">
             <input class="form-control" name="userfile" type="file"/>
             <input type="submit" name="btn_upload" value="Upload &uarr;" class="btn btn-success"/>
@@ -139,27 +139,15 @@
                 <img class="thumbnail" name="thumb" id="thumb_<?php echo $key; ?>" src="<?php echo base_url().$dir['thumb'].$img['thumb']; ?>"/>
                 </a>
             </div>
-            <a class="adel" href="<?php echo site_url('admin2/delete/'.$img['original']); ?>">
-            <div class="btn btn-warning">
-                <div class="btn">delete</div>
-            </div>
-            </a>
-        </div>
-        <?php } ?>
+                   <?php } ?>
         <div class="clear"></div>
         </div>
         <div class="clear"></div>
 
-        <div class="bottom">
-            <?php echo $total; ?> Image(s)
-        </div>
-
-        <div class="bottom">
-            <?php echo $this->pagination->create_links(); ?>
-        </div>
     </div>
 
     <div class="clear"></div>
+ No error = Uploaded
     
                 <div class="dadel">
             </div>
