@@ -37,13 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
 $route['default_controller'] = "news";
-//$route['news/(:any)'] = 'news/view/$1';
-$route['news/create'] = 'news/create';
-$route['news/upload'] = 'news/upload';
-$route['news/add_photos'] = 'news/add_photos';
 $route['404_override'] = '';
-
+$route['shop/(:num)'] = 'shop/$1';
+$route['list'] = "lister";
+$route['msg'] = "messaging";
+$route['msg/(:any)'] = 'messaging/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
