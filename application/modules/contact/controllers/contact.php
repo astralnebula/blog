@@ -41,6 +41,24 @@ if($this->db->insert('contact') == 'TRUE'){
 	}
 	
 
+	public function delete($id = 'NULL')
+	{
+        $this->load->library('template');
+            $this->load->helper('form');
+        $this->template->set_title('Contact');
+        $this->load->database();
+    
+if( $this->db->delete('contact', array('id' => $id)) == 'TRUE'){ 
+
+
+        redirect('secure/dashboard','refresh');
+    }else
+    
+   redirect('secure','refresh');
+	}
+	
+
+
 
 }
 

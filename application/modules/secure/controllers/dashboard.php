@@ -18,6 +18,8 @@ class Dashboard extends MY_Controller {
 
   public function index()
   {
+	  $format = 'DATE_RFC822';
+	  $data['time'] = standard_date($format,time());
       //var_dump( $this->session->all_userdata());
     if($this->session->userdata('logged_in'))
     {
@@ -25,6 +27,7 @@ class Dashboard extends MY_Controller {
     // $data = $this->session->alluserdata();
       $data['username'] = $session_data['username'];
            $data['id'] = $session_data['id'];
+              $data['email'] = $session_data['useremail'];
 $data['inbox'] = $this->inbox->get_inbox();
 
       //echo "hi";

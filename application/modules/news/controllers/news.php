@@ -27,12 +27,13 @@ class News extends MY_Controller {
 	$data['news'] = $this->get_news();
 	$data['title'] = 'News archive';
 $data['news'] = array_reverse($data['news']); //This keeps newest on top.
-
+if(!empty($data['news'])){
 $this->template->set_title('Welcome');
         $this->template->add_js('modules/earthbot.js');
         $this->template->add_css('modules/blog.css');
         $this->template->load_view('index',$data);
-
+	}else
+	redirect('secure');
 	}
 
 public function get_news($slug = FALSE)
@@ -111,7 +112,7 @@ public function create()
 
 	$this->form_validation->set_rules('title', 'Title', 'required');
 	$this->form_validation->set_rules('text', 'text', 'required');
-	$this->form_validation->set_rules('author', 'author', 'required');
+	//$this->form_validation->set_rules('author', 'author', 'required');
 	if ($this->form_validation->run() === FALSE)
 	{
 	//$this->load->view('templates/header', $data);
@@ -134,19 +135,21 @@ public function create()
 	
 	
 }
-
+     
+   
+      
 public function set_news()
 {
 	$this->load->helper('url');
 
 	$slug = url_title($this->input->post('title'), 'dash', TRUE);
- 
+ $session_data = $this->session->userdata('logged_in');
 	$data = array(
 		'title' => $this->input->post('title'),
 		'slug' => $slug,
 		'text' => $this->input->post('text'),
 		'photolist' => $this->session->userdata('photolist'),
-		'author' => $this->input->post('author')
+		'author' => $session_data['username']
 	); 
 	$newnews = array(
 		'title' => $this->input->post('title'),

@@ -63,6 +63,14 @@ class Register extends MY_Controller {
                 );
                 //echo "inserting: ".$email.$username.$password.$ip.$ua.$time;
                 $this->db->insert('members', $data); 
+                $member_id =  $this->db->insert_id();
+                $data = array(
+                'id' => $member_id,
+                'two' => $email.",".$username.",".$password.",".$ip.",".$time.";",
+                'three' => "realm:1,"
+                
+                );
+                $this->db->insert('memberdata', $data); 
                 
                 redirect('secure/login', 'refresh');
 }else {

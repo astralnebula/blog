@@ -14,9 +14,15 @@
                 <li><a href="<?php echo site_url('news'); ?>">Blog</a></li>
                 <li><a href="<?php echo site_url('gallery'); ?>">Photos</a></li>
                 <li><a href="<?php echo site_url('contact'); ?>">Contact Me</a></li>
-              
-                
-                
+     <?php           if($this->session->userdata('logged_in'))
+    {
+		echo " <li><a href=\"".site_url('secure/logout')."\">Logout</a></li>
+		  <li><a href=\"".site_url('secure/dashboard')."\">Dashboard</a></li>";
+	
+		  }  else
+		  
+		  echo " <li><a href=\"".site_url('secure')."\">Login</a></li>";
+              ?>  
             </ul>
             
             
